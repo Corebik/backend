@@ -16,9 +16,16 @@ const puerto = 3900;
 app.use(cors());
 
 // Transformar body a Objeto
-app.use(express.json());
+app.use(express.json()); // Recibir los datos con content-type: application/json
+app.use(express.urlencoded({extended: true})); // uform-urlencoded
 
-// Crear rutas
+// RUTAS
+const routes_product = require("./routes/productRoute");
+
+// Carga de las rutas
+app.use("/api", routes_product)
+
+// Crear rutas de prueba
 app.get("/Probando", (req, res) => {
     console.log("Se ha ejecutado el endpoint probando");
     return res.status(200).send({
