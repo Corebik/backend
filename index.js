@@ -21,9 +21,11 @@ app.use(express.urlencoded({extended: true})); // uform-urlencoded
 
 // RUTAS
 const routes_product = require("./routes/productRoute");
+const routes_user = require("./routes/userRoute");
 
 // Carga de las rutas
-app.use("/api", routes_product)
+app.use("/api", routes_product);
+app.use("/api/user", routes_user);
 
 // Crear rutas de prueba
 app.get("/Probando", (req, res) => {
